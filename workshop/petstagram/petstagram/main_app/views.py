@@ -26,7 +26,7 @@ def show_dashboard(request):
     context = {
         'pet_photos': pet_photos,
     }
-    return render(request, 'dashboard.html', context    )
+    return render(request, 'dashboard.html', context)
 
 
 def show_profile(request):
