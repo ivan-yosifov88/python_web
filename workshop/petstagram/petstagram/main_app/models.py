@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.core.validators import MinLengthValidator
 
@@ -53,6 +55,11 @@ class Profile(models.Model):
         blank=True,
     )
 
+    @property
+    def name(self):
+        full_name = self.first_name + " " + self.last_name if self.last_name else self.first_name
+        return full_name
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
@@ -86,6 +93,10 @@ class Pet(models.Model):
         on_delete=models.CASCADE,
     )
 
+    @property
+    def age(self):
+        return datetime.datetime.now().year - self.date_of_birth.year
+
     class Meta:
         unique_together = ('user_profile', 'name')
 
@@ -96,11 +107,7 @@ class Pet(models.Model):
 class PetPhoto(models.Model):
     MAX_PHOTO_SIZE_MB = 5
 
-    photo = models.FileField(
-        # validators=(
-        #     validate_file_size_5_MB(MAX_PHOTO_SIZE_MB),
-        # ),
-    )
+    photo = models.ImageField()
 
     tagged_pets = models.ManyToManyField(
         Pet,

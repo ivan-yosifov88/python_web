@@ -32,7 +32,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'exam_prep.urls'
+ROOT_URLCONF = 'exam_prep.url'
 
 TEMPLATES = [
     {

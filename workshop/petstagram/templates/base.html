@@ -28,7 +28,7 @@
             {% if not hp %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
-           {% elif hp%}
+                    {% elif hp %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
                 </li>
@@ -37,21 +37,19 @@
                 </li>
                 {% if not hide_additional_nav_items %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Pet</a>
+                        <a class="nav-link" href="{% url 'add pet' %}">Add Pet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Photo</a>
+                        <a class="nav-link" href="{% url 'add pet photo' %}">Add Photo</a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-link" href="{% url 'profile details' %}">Profile</a>
                 </li>
-           {% endif %}
+            {% endif %}
         </ul>
     </div>
 </nav>
-
-
 <div class="container">
     {% block page_content %}
     {% endblock %}
@@ -60,7 +58,6 @@
 <footer class="fixed-bottom card-footer ">
     <div>@2022 Python Web Basics Workshop at SoftUni</div>
 </footer>
-<!-- End Page Footer -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
